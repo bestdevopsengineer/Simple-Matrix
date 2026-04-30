@@ -1,4 +1,4 @@
-name: Matrix Fail Example
+name: Matrix Dependency Example
 
 on: [push]
 
@@ -8,16 +8,15 @@ jobs:
 
     strategy:
       matrix:
-        python-version: [3.8, 3.11]
+        node-version: [16, 20]
 
     steps:
-      - uses: actions/setup-python@v4
+      - uses: actions/setup-node@v4
         with:
-          python-version: ${{ matrix.python-version }}
+          node-version: ${{ matrix.node-version }}
 
-      - name: Run code
-        run: |
-          python -c "print('Hello')" 
-          python -c "match 1:
-            case 1:
-              print('match works')"
+      - name: Install old package
+        run: npm install uuid@3
+
+      - name: Run script
+        run: node -e "console.log('ok')"
