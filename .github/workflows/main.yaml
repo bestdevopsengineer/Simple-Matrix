@@ -8,15 +8,12 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [16, 20]
+        node-version: [14, 18]
 
     steps:
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-
-      - name: Install old package
-        run: npm install uuid@3
-
-      - name: Run script
-        run: node -e "console.log('ok')"
+      
+      - name: Run code
+        run: node -e "fetch('https://example.com')"
