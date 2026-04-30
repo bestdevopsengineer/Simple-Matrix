@@ -3,22 +3,13 @@ name: Matrix Example
 on: [push]
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
 
     strategy:
-      fail-fast: false
       matrix:
-        java: [ 21]
+        python-version: [3.9, 3.10, 3.11]
 
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Set up Java
-        uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: ${{ matrix.java }}
-
-      - name: Build
-        run: mvn -B clean install
+      - name: Show Python version
+        run: echo "Running on Python ${{ matrix.python-version }}"
