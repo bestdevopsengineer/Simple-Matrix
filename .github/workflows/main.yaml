@@ -16,4 +16,4 @@ jobs:
           node-version: ${{ matrix.node-version }}
       
       - name: Run code
-        run: node -e "fetch('https://example.com')"
+        run: node -e "fetch('https://example.com').then(res => res.text()).then(console.log)"
