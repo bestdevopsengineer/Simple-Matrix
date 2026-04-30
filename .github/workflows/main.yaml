@@ -1,4 +1,4 @@
-name: Matrix Dependency Example
+name: 1-Simple Matrix
 
 on: [push]
 
